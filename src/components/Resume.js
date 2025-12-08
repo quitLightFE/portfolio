@@ -1,11 +1,9 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import bg3 from "../assets/bg/v1016-b-09_1.jpg";
-import { Element } from "react-scroll";
 
 export default function Resume() {
   return (
-    <Element name="resume">
       <Box
         component={"section"}
         px={[2, 5]}
@@ -133,11 +131,10 @@ export default function Resume() {
           </Grid>
         </Container>
       </Box>
-    </Element>
   );
 }
 
-function VerticalDivider({ color, size = 12 }) {
+function VerticalDivider({ size = 12 }) {
   return (
     <Box
       display={"flex"}
@@ -148,8 +145,8 @@ function VerticalDivider({ color, size = 12 }) {
     >
       <Box
         sx={{
-          width: 10,
-          height: 10,
+          width: size,
+          height: size,
           borderRadius: "50%",
           filter: "drop-shadow(0 0 5px red)",
           bgcolor: "error.dark",

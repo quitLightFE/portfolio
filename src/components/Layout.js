@@ -8,12 +8,30 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import MyMenu from "./MyMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ArrowUpward } from "@mui/icons-material";
 
 export default function Layout({ children }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   const [openMenu, setOpenMenu] = useState(false);
+  const [showBtnScroll, setShowBtnScroll] = useState(false);
+
+  const toggleBtnScroll = () => {
+    if (window.scrollY > 300) setShowBtnScroll(true);
+    else setShowBtnScroll(false);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleBtnScroll);
+
+    return () => window.removeEventListener("scroll", toggleBtnScroll);
+  }, []);
+
   return (
     <Box
       className="App"
@@ -26,23 +44,17 @@ export default function Layout({ children }) {
         flexGrow: 1,
       }}
     >
-      {isMobile ? (
-        <Drawer
-          variant="persistent"
-          open={openMenu}
-          sx={{
-            "&::firstchild": {
-              bgcolor: "red",
-            },
-          }}
-        >
-          <MyMenu />
-        </Drawer>
-      ) : (
-        <Drawer open variant="permanent">
-          <MyMenu />
-        </Drawer>
-      )}
+      <Drawer
+        onClose={(e, r) => {
+          if (r === "backdropClick" && isMobile) setOpenMenu(false)
+          return
+        }}
+        open={isMobile ? openMenu : true}
+        variant={isMobile ? "persistent" : "permanent"}
+        
+      >
+        <MyMenu />
+      </Drawer>
       <Box
         component={"main"}
         sx={{ flexGrow: 1, marginLeft: [0, 0, 0, "300px"] }}
@@ -50,12 +62,12 @@ export default function Layout({ children }) {
         {isMobile && (
           <IconButton
             onClick={() => setOpenMenu(!openMenu)}
+            color="warning"
             sx={{
               position: "fixed",
               right: 30,
               top: 30,
               p: 1,
-              color: "#fff",
             }}
           >
             {(openMenu && <CloseIcon />) || <MenuIcon />}
@@ -63,6 +75,20 @@ export default function Layout({ children }) {
         )}
         {children}
       </Box>
+      <IconButton
+        color="warning"
+        sx={{
+          position: "fixed",
+          bottom: 30,
+          right: 30,
+          width: 40,
+          height: 40,
+          display: showBtnScroll ? "block" : "none",
+        }}
+        onClick={scrollToTop}
+      >
+        <ArrowUpward />
+      </IconButton>
     </Box>
   );
 }

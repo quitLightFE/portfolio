@@ -10,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { Element } from "react-scroll";
 import bg2 from "../assets/bg/89787.jpg";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
@@ -36,7 +35,7 @@ const skills = [
 
 export default function AboutPage() {
   return (
-    <Element name="about">
+    <>
       <Box
         component={"section"}
         px={[2, 5]}
@@ -153,6 +152,7 @@ export default function AboutPage() {
               <Grid key={i + 450} size={{ xs: 12, lg: 6 }}>
                 {row.map((skill, i) => (
                   <Box
+                  key={i + 550}
                     p={1}
                     color={"#fff"}
                     display={"flex"}
@@ -177,6 +177,6 @@ export default function AboutPage() {
           </Grid>
         </Container>
       </Box>
-    </Element>
+    </>
   );
 }

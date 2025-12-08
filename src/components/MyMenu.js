@@ -6,7 +6,7 @@ import PolylineOutlinedIcon from "@mui/icons-material/PolylineOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
-import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
+// import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
 import DnsOutlinedIcon from "@mui/icons-material/DnsOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { Link } from "react-scroll";
@@ -31,10 +31,10 @@ const tabs = [
     title: "Resume",
     icon: <ArticleOutlinedIcon />,
   },
-  {
-    title: "Portfolio",
-    icon: <InsertPhotoOutlinedIcon />,
-  },
+  // {
+  //   title: "Portfolio",
+  //   icon: <InsertPhotoOutlinedIcon />,
+  // },
   {
     title: "Services",
     icon: <DnsOutlinedIcon />,
@@ -47,6 +47,7 @@ const tabs = [
 
 export default function MyMenu() {
   const theme = useTheme();
+
   return (
     <Box
       bgcolor={"CanvasText"}
@@ -84,14 +85,14 @@ export default function MyMenu() {
         width={"100%"}
         color={"white"}
         sx={{
+          color: "#ffffffb6",
           "& > a": {
             display: "flex",
             p: 2,
             gap: 2,
             cursor: "pointer",
-            "&.active": {
-              fontWeight: "bolder",
-              textShadow: "0 0 30px #ff0000",
+            "&.active, &:hover": {
+              textShadow: "0 0 20px #ff0000",
               color: "#cc3a3aff",
               "& svg": {
                 fill: theme.palette.error.dark,

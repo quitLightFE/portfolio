@@ -1,14 +1,13 @@
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 import bgImage from "../assets/bg/top-view-desk-concept-with-laptop.jpg";
-import { Element } from "react-scroll";
 import Typewriter from "typewriter-effect";
 
 export default function Landing() {
   return (
-    <Element
+    <Box
       name="home"
-      style={{
+      sx={{
         width: "100%",
         height: "min(100dvh, 1500px)",
         backgroundImage: `url(${bgImage})`,
@@ -91,6 +90,6 @@ export default function Landing() {
           </Box>
         </Container>
       </Box>
-    </Element>
+    </Box>
   );
 }
