@@ -1,4 +1,14 @@
-import { Box, Container, Grid, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  FormControl,
+  Grid,
+  IconButton,
+  Input,
+  InputLabel,
+  OutlinedInput,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import bgContact from "../assets/bg/v1016-b-09_1.jpg";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
@@ -35,7 +45,7 @@ export default function Contact() {
         >
           Contact
         </Typography>
-        <Grid container>
+        <Grid container sx={{bgcolor: "#9e9e9e55", p: 2, borderRadius: 2}}>
           <Grid size={{ xs: 12, lg: 5 }}>
             <Box color={"white"}>
               <Box display={"flex"} gap={1} mb={2}>
@@ -83,8 +93,23 @@ export default function Contact() {
               </MapContainer>
             </Box>
           </Grid>
-          <Grid size={{xs: 12, lg: 7}}>
-      
+          <Grid size={{ xs: 12, lg: 7 }}>
+            <Box component={"form"} color={"white"}>
+              <Grid container>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <FormControl>
+                    <InputLabel htmlFor="name-input">Your Name</InputLabel>
+                    <OutlinedInput color="warning" sx={{color: "#fff"}} id="name-input" />
+                  </FormControl>
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <FormControl variant="filled">
+                    <InputLabel htmlFor="email-input">Your Email</InputLabel>
+                    <OutlinedInput color="warning" id="email-input" />
+                  </FormControl>
+                </Grid>
+              </Grid>
+            </Box>
           </Grid>
         </Grid>
       </Container>
