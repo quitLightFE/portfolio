@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Container,
   FormControl,
   Grid,
@@ -7,6 +8,7 @@ import {
   Input,
   InputLabel,
   OutlinedInput,
+  TextField,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -45,33 +47,33 @@ export default function Contact() {
         >
           Contact
         </Typography>
-        <Grid container sx={{bgcolor: "#9e9e9e55", p: 2, borderRadius: 2}}>
+        <Grid container sx={{ bgcolor: "#46464654", p: 4, borderRadius: 2 }}>
           <Grid size={{ xs: 12, lg: 5 }}>
             <Box color={"white"}>
-              <Box display={"flex"} gap={1} mb={2}>
+              <Box display={"flex"} gap={1} mb={1}>
                 <IconButton color="inherit">
                   <LocationOnOutlined />
                 </IconButton>
                 <Box>
-                  <Typography variant="h5">Address</Typography>
+                  <Typography variant="h6">Address</Typography>
                   <Typography variant="p">Taskent City</Typography>
                 </Box>
               </Box>
-              <Box display={"flex"} gap={1} mb={2}>
+              <Box display={"flex"} gap={1} mb={1}>
                 <IconButton color="inherit">
                   <LocalPhoneOutlinedIcon />
                 </IconButton>
                 <Box>
-                  <Typography variant="h5">Phone</Typography>
+                  <Typography variant="h6">Phone</Typography>
                   <Typography variant="p">+998991234567</Typography>
                 </Box>
               </Box>
-              <Box display={"flex"} gap={1} mb={2}>
+              <Box display={"flex"} gap={1} mb={1}>
                 <IconButton color="inherit">
                   <EmailOutlined />
                 </IconButton>
                 <Box>
-                  <Typography variant="h5">Email</Typography>
+                  <Typography variant="h6">Email</Typography>
                   <Typography variant="p">abcd@gmail.com</Typography>
                 </Box>
               </Box>
@@ -86,29 +88,60 @@ export default function Contact() {
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <Marker position={[41.311031, 69.279635]}>
-                  <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                  </Popup>
+                  <Popup>Amir Temur Xiyoboni</Popup>
                 </Marker>
               </MapContainer>
             </Box>
           </Grid>
           <Grid size={{ xs: 12, lg: 7 }}>
-            <Box component={"form"} color={"white"}>
+            <Box
+              component={"form"}
+              color={"white"}
+              display={"flex"}
+              flexDirection={"column"}
+              alignItems={"center"}
+            >
               <Grid container>
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <FormControl>
+                <Grid size={{ xs: 12, md: 6 }} p={2}>
+                  <FormControl variant="filled" fullWidth color="warning">
                     <InputLabel htmlFor="name-input">Your Name</InputLabel>
-                    <OutlinedInput color="warning" sx={{color: "#fff"}} id="name-input" />
+                    <OutlinedInput
+                      color="warning"
+                      sx={{ color: "#fff" }}
+                      id="name-input"
+                    />
                   </FormControl>
                 </Grid>
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <FormControl variant="filled">
+                <Grid size={{ xs: 12, md: 6 }} p={2}>
+                  <FormControl color="warning" variant="filled" fullWidth>
                     <InputLabel htmlFor="email-input">Your Email</InputLabel>
-                    <OutlinedInput color="warning" id="email-input" />
+                    <OutlinedInput id="email-input" />
                   </FormControl>
+                </Grid>
+                <Grid size={{ xs: 12 }} p={2}>
+                  <FormControl color="warning" variant="filled" fullWidth>
+                    <InputLabel htmlFor="subject-input">Subject</InputLabel>
+                    <OutlinedInput id="subject-input" />
+                  </FormControl>
+                </Grid>
+                <Grid size={{ xs: 12 }} p={2}>
+                  <TextField
+                    color="warning"
+                    multiline
+                    fullWidth
+                    rows={10}
+                    placeholder="Message"
+                  />
                 </Grid>
               </Grid>
+              <Button
+                sx={{ borderRadius: 4 }}
+                type="button"
+                variant="contained"
+                color="warning"
+              >
+                Send Message
+              </Button>
             </Box>
           </Grid>
         </Grid>

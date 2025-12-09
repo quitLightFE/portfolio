@@ -5,26 +5,37 @@ import Layout from "./components/Layout";
 import Resume from "./components/Resume";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
+import { createTheme, ThemeProvider } from "@mui/material";
+import Footer from "./components/Footer";
+
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 function App() {
   return (
-    <Layout>
-      <Element name="home">
-        <Landing />
-      </Element>
-      <Element name="about">
-        <AboutPage />
-      </Element>
-      <Element name="resume">
-        <Resume />
-      </Element>
-      <Element name="services">
-        <Services />
-      </Element>
-      <Element name="contact">
-        <Contact />
-      </Element>
-    </Layout>
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <Element name="home">
+          <Landing />
+        </Element>
+        <Element name="about">
+          <AboutPage />
+        </Element>
+        <Element name="resume">
+          <Resume />
+        </Element>
+        <Element name="services">
+          <Services />
+        </Element>
+        <Element name="contact">
+          <Contact />
+        </Element>
+        <Footer />
+      </Layout>
+    </ThemeProvider>
   );
 }
 
